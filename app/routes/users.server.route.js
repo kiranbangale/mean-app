@@ -12,7 +12,7 @@
         app.route('/users/:userId')
             .get(users.read);
 
-        app.param('userId', users.userBYID);
+        app.param('userId', users.userByID);
 
     };
 
