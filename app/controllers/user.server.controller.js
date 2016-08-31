@@ -47,4 +47,26 @@
 
     };
 
+    module.exports.update = function(req, res, nxt) {
+
+        User.findByIdAndUpdate(req.user.id, req.body, function(err, user) {
+            if (err) {
+                return nxt(err);
+            } else {
+                res.json(user);
+            }
+        });
+
+    };
+
+    module.exports.delete = function(req, res, nxt) {
+        req.user.remove(function(err) {
+            if (err) {
+                return nxt(err);
+            } else {
+                res.json(req.user);
+            }
+        });
+    };
+
 }());
